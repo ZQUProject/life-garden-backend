@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>life-garden-backend</artifactId>
+        <groupId>com.garden.life</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.garden.life.api</groupId>
+    <artifactId>life-garden-service-api</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <description>
+        服务提供者和消费者的主要依赖
+    </description>
+    <packaging>pom</packaging>
+
+
+ 
+</project>
