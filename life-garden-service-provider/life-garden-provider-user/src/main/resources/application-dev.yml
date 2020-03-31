@@ -1,0 +1,83 @@
+# Spring boot application
+spring:
+  application:
+    name: life-garden-provider-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://47.56.172.200:3307/life_garden?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: lifegarden
+    password: lifegarden
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 8
+      connection-test-query: SELECT 1
+      max-lifetime: 1000000
+
+# Service Port
+server:
+  port: 8041
+
+# Services Versions
+services:
+  versions:
+    user:
+      v1: 1.0.0
+
+
+# MyBatisPlus Config properties
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.garden.life.commons.domain
+  configuration:
+    map-underscore-to-camel-case: true
+
+# Dubbo Config properties
+dubbo:
+  ## Base packages to scan Dubbo Component£º@com.alibaba.dubbo.config.annotation.Service
+  scan:
+    basePackages: com.garden.life.provider.user.service.impl
+  ## ApplicationConfig Bean
+  application:
+    id: life-garden-provider-user
+    name: life-garden-provider-user
+    qos-port: 22222
+    qos-enable: true
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20881
+    status: server
+    serialization: kryo
+    optimizer: com.garden.life.commons.optimizer.SerializationOptimizerImpl
+  ## RegistryConfig Bean
+  registry:
+    id: nacos
+    address: nacos://47.98.137.65:8848
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+        ## StatusChecker Name extras (default : empty )
+        extras: load,threadpool
+logging:
+  level.com.garden.life.commons.mapper: DEBUG

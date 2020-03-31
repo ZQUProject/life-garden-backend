@@ -1,0 +1,1 @@
+-Djava.net.preferIPv4Stack=true -Dcsp.sentinel.api.port=8719 -Dcsp.sentinel.dashboard.server=47.98.137.65:8081 -Dproject.name=life-garden-service-provider-user

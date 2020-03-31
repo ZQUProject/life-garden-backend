@@ -1,0 +1,62 @@
+# Spring boot application
+spring:
+  application:
+    name: life-garden-consumer-user
+
+# Service Port
+server:
+  port: 8051
+
+# Services Versions
+services:
+  versions:
+    user:
+      v1: 1.0.0
+
+# Dubbo Config properties
+dubbo:
+  ## Base packages to scan Dubbo Component£º@com.alibaba.dubbo.config.annotation.Service
+  scan:
+    basePackages: com.garden.life.consumer.user.controller
+  ## ApplicationConfig Bean
+  application:
+    id: life-garden-consumer-user
+    name: life-garden-consumer-user
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 21881
+    status: server
+    serialization: kryo
+    optimizer: com.garden.life.commons.optimizer.SerializationOptimizerImpl
+  ## RegistryConfig Bean
+  registry:
+    id: nacos
+    address: nacos://47.98.137.65:8848
+  consumer:
+    timeout: 3000
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+logging:
+  level.com.garden.life.commons.mapper: DEBUG
