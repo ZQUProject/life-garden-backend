@@ -8,5 +8,5 @@ import com.garden.life.commons.domain.User;
  * @date 2020/3/28 23:48
  */
 public interface UserService extends IService<User> {
-	User queryUserByUsername(String username);
+	User queryUserByUsername(String nickname);
 }

@@ -15,8 +15,8 @@ import org.apache.dubbo.config.annotation.Service;
 @Service(version = "${services.versions.user.v1}",timeout = 50000)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 	@Override
-	public User queryUserByUsername(String username) {
-		Wrapper<User> queryWrapper = new QueryWrapper<User>().eq("username", username);
+	public User queryUserByUsername(String nickname) {
+		Wrapper<User> queryWrapper = new QueryWrapper<User>().likeLeft("nickname", nickname);
 		final User user = getOne(queryWrapper);
 		System.out.println(user);
 		return user;

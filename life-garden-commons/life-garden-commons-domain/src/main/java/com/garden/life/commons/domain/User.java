@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -19,7 +20,13 @@ import java.io.Serializable;
 @TableName("user")
 public class User implements Serializable {
 	@TableId(type = IdType.INPUT)
-	private Long userId;
-	private String username;
+	private Long id;
+	private String account;
+	private String nickname;
+	private String password;
+	private Integer class_id;
+	private Integer role_id;
+	private Date updateTime;
+	private Date createTime;
 }
 
