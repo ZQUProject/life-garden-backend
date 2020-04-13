@@ -10,17 +10,20 @@ import java.util.Date;
 
 /**
  * <p>
- * 角色信息表
+ * 失物信息表
  * </p>
  * @author RunningSnail
  * @date  2020-04-12
  */
 @Data
-@TableName("role")
-public class Role implements Serializable {
+@TableName("lost_property")
+public class LostProperty implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-    private String name;
-    private String remark;
+    private Long id;
+    private Long userId;
+    private String nickname;
+    private Long type;
+    private String content;
+    private String contractWay;
     private Date createTime;
 }

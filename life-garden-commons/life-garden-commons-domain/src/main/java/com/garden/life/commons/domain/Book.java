@@ -6,21 +6,24 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
- * 角色信息表
+ * 图书信息表
  * </p>
  * @author RunningSnail
  * @date  2020-04-12
  */
 @Data
-@TableName("role")
-public class Role implements Serializable {
+@TableName("book")
+public class Book implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-    private String name;
+    private Long id;
+    private Long userId;
+    private String nickname;
+    private String bookName;
     private String remark;
-    private Date createTime;
+    private String detail;
+    private Integer status;
+    private Long contractWay;
 }

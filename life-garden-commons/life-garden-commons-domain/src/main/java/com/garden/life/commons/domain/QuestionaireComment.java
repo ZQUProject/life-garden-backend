@@ -10,17 +10,19 @@ import java.util.Date;
 
 /**
  * <p>
- * 角色信息表
+ * 问卷评论信息表
  * </p>
  * @author RunningSnail
  * @date  2020-04-12
  */
 @Data
-@TableName("role")
-public class Role implements Serializable {
+@TableName("questionaire_comment")
+public class QuestionaireComment implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    private String name;
-    private String remark;
+    private Integer questionaireId;
+    private String content;
+    private Integer parentId;
+    private Integer userId;
     private Date createTime;
 }
