@@ -1,7 +1,5 @@
 package com.garden.life.consumer.user;
 
-import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.container.Main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

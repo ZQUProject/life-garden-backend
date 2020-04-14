@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.garden.life.commons.mapper.FacultyClassMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.garden.life.commons.domain.FacultyClass">
+        <result column="class_id" property="classId"/>
+        <result column="faculty_id" property="facultyId"/>
+    </resultMap>
+
+</mapper>

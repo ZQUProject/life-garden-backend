@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.garden.life.commons.mapper.ApplyFileMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.garden.life.commons.domain.ApplyFile">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="nickname" property="nickname"/>
+        <result column="apply_type" property="applyType"/>
+        <result column="apply_reason" property="applyReason"/>
+        <result column="apply_time" property="applyTime"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+</mapper>
