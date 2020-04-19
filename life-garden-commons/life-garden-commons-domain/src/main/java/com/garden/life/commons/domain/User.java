@@ -19,13 +19,16 @@ import java.util.Date;
 @Data
 @TableName("user")
 public class User implements Serializable {
+
+	private static final long serialVersionUID = 387857056940196339L;
+
 	@TableId(type = IdType.INPUT)
 	private Long id;
 	private String account;
 	private String nickname;
 	private String password;
-	private Integer class_id;
-	private Integer role_id;
+	private Integer classId;
+	private Integer roleId;
 	private Date updateTime;
 	private Date createTime;
 }

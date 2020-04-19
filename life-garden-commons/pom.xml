@@ -14,6 +14,7 @@
         <module>life-garden-commons-service</module>
         <module>life-garden-commons-domain</module>
         <module>life-garden-commons-utils</module>
+        <module>life-garden-commons-beans</module>
     </modules>
 
 
