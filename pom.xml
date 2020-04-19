@@ -6,6 +6,8 @@
     <modules>
         <module>life-garden-commons</module>
         <module>life-garden-gateway</module>
+        <module>life-garden-auth</module>
+        <module>life-garden-commons-beans</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -37,6 +39,7 @@
         <mybatis.plus.version>3.3.1</mybatis.plus.version>
         <mysql.version>8.0.18</mysql.version>
         <hutool-all.version>5.2.5</hutool-all.version>
+        <jwt.version>0.9.1</jwt.version>
     </properties>
 
     <licenses>
@@ -81,7 +84,7 @@
             <dependency>
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-client</artifactId>
-                <version>1.2.1</version>
+                <version>${nacos-client.version}</version>
             </dependency>
 
             <dependency>
@@ -109,6 +112,16 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

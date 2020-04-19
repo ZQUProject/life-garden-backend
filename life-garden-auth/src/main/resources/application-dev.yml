@@ -1,0 +1,76 @@
+# Spring boot application
+spring:
+  application:
+    name: life-garden-auth
+
+# Service Port
+server:
+  port: 8030
+
+#jwt
+jwt:
+  header: Authorization
+  secret: MySecret
+  expiration: 3600000
+  auth:
+    path: login
+
+# Services Versions
+services:
+  versions:
+    jwt:
+      user:
+        v1: 1.0.0
+    user:
+      v1: 1.0.0
+
+
+# Dubbo Config properties
+dubbo:
+  ## Base packages to scan Dubbo Component£º@com.alibaba.dubbo.config.annotation.Service
+  scan:
+    basePackages: com.garden.life.auth.service.impl
+  ## ApplicationConfig Bean
+  application:
+    id: life-garden-provider-user
+    name: life-garden-provider-user
+    qos-port: 22222
+    qos-enable: true
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20881
+    status: server
+    serialization: kryo
+    optimizer: com.garden.life.commons.optimizer.SerializationOptimizerImpl
+  ## RegistryConfig Bean
+  registry:
+    id: nacos
+    address: nacos://47.98.137.65:8848
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+        ## StatusChecker Name extras (default : empty )
+        extras: load,threadpool
+logging:
+  level.com.garden.life.commons.mapper: DEBUG
