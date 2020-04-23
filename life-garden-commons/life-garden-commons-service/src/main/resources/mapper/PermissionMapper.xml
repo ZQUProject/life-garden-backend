@@ -11,4 +11,11 @@
         <result column="create_date" property="createDate"/>
     </resultMap>
 
+    <select id="queryPermissionByRoleId" resultMap="BaseResultMap">
+        SELECT p.id, p.name, p.parent_id, p.alias, p.create_date
+        FROM (SELECT permission_id FROM role_permission where role_id = #{roleId}) AS rp
+        LEFT JOIN permission AS p
+        ON rp.permission_id = p.id
+    </select>
+
 </mapper>

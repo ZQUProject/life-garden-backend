@@ -1,6 +1,7 @@
 package com.garden.life.commons.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.garden.life.commons.beans.UserDetailDTO;
 import com.garden.life.commons.domain.User;
 
 /**
@@ -8,4 +9,5 @@ import com.garden.life.commons.domain.User;
  * @date 2020/3/28 22:47
  */
 public interface UserMapper extends BaseMapper<User> {
+	UserDetailDTO queryUserDetailByAccount(String account);
 }

@@ -11,5 +11,11 @@
 
     <artifactId>life-garden-commons-beans</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.garden.life</groupId>
+            <artifactId>life-garden-commons-domain</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>

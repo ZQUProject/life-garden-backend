@@ -7,7 +7,6 @@
         <module>life-garden-commons</module>
         <module>life-garden-gateway</module>
         <module>life-garden-auth</module>
-        <module>life-garden-commons-beans</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,6 +28,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <spring-cloud-gateway.version>2.1.5.RELEASE</spring-cloud-gateway.version>
+        <spring-nacos-discovery.version>2.1.2.RELEASE</spring-nacos-discovery.version>
         <dubbo.version>2.7.3</dubbo.version>
         <dubbo-nacos.version>2.7.3</dubbo-nacos.version>
         <nacos-client.version>1.2.1</nacos-client.version>
@@ -65,6 +66,17 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-gateway.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring-nacos-discovery.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
