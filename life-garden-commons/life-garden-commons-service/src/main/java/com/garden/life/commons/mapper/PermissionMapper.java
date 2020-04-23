@@ -14,5 +14,5 @@ import java.util.Set;
  * @since 2020-04-12
  */
 public interface PermissionMapper extends BaseMapper<Permission> {
-	Set<Permission> queryPermissionByRoleId(Long roleId);
+
 }

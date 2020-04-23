@@ -15,5 +15,4 @@ import java.util.Set;
  */
 public interface PermissionService extends IService<Permission> {
 
-	Set<Permission> queryPermssionByRoleId(Long roleId);
 }
