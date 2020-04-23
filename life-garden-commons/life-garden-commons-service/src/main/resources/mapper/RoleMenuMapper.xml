@@ -8,4 +8,11 @@
         <result column="menu_id" property="menuId"/>
     </resultMap>
 
+    <select id="queryMenuByRoleId" resultType="com.garden.life.commons.domain.Menu">
+        SELECT m.id, m.name, m.sort, m.component, m.parent_id, m.create_time
+        FROM (SELECT menu_id FROM role_menu where role_id = #{roleId}) AS rm
+        LEFT JOIN menu AS m
+        ON rm.menu_id = m.id
+    </select>
+
 </mapper>
