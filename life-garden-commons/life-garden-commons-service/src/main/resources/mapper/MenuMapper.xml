@@ -11,5 +11,11 @@
         <result column="parent_id" property="parentId"/>
         <result column="create_time" property="createTime"/>
     </resultMap>
+    <select id="queryMenuByRoleId" resultMap="BaseResultMap">
+        SELECT m.id, m.name, m.sort, m.component, m.parent_id, m.create_time
+        FROM (SELECT menu_id FROM role_menu where role_id = #{roleId}) AS rm
+        LEFT JOIN menu AS m
+        ON rm.menu_id = m.id
+    </select>
 
 </mapper>
