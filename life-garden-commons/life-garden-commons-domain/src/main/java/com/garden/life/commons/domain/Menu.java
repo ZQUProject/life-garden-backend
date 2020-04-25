@@ -23,6 +23,7 @@ public class Menu implements Serializable {
     private String name;
     private Integer sort;
     private String component;
+    private String path;
     private Integer parentId;
     private Date createTime;
 }

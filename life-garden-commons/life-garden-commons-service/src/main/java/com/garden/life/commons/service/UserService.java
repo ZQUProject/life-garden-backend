@@ -1,7 +1,7 @@
 package com.garden.life.commons.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.garden.life.commons.beans.UserDetailDTO;
+import com.garden.life.commons.bean.UserDetailDTO;
 import com.garden.life.commons.domain.User;
 
 /**

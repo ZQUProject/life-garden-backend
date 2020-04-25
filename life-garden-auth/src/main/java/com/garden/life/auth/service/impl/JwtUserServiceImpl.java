@@ -1,15 +1,17 @@
 package com.garden.life.auth.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.garden.life.auth.beans.AuthenticationInfo;
+import com.garden.life.auth.beans.AuthorizationUser;
+import com.garden.life.auth.beans.JwtUser;
 import com.garden.life.auth.service.JwtUserService;
+import com.garden.life.auth.util.JwtTokenUtils;
+import com.garden.life.commons.bean.UserDetailDTO;
 import com.garden.life.commons.domain.User;
-import com.garden.life.commons.service.MenuService;
-import com.garden.life.commons.service.PermissionService;
-import com.garden.life.commons.service.RoleService;
 import com.garden.life.commons.service.UserService;
-import org.apache.dubbo.common.bytecode.Wrapper;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -22,12 +24,22 @@ public class JwtUserServiceImpl implements JwtUserService {
 
 	@Reference(version = "${services.versions.user.v1}", lazy = true, timeout = 3000)
 	private UserService userService;
-
+	@Autowired
+	private JwtTokenUtils jwtTokenUtils;
 
 	@Override
 	public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
-		QueryWrapper<User> queryWrapper = new QueryWrapper<User>().eq("account", account);
-		User user = userService.getOne()
+
 		return null;
+	}
+	@Override
+	public AuthenticationInfo queryUserDetail(String account, String password) {
+		UserDetailDTO userDetailDTO = userService.queryUserDetail(account, password);
+		if (userDetailDTO == null){
+			return null;
+		}
+		JwtUser jwtUser = new JwtUser(userDetailDTO);
+		String token = jwtTokenUtils.generateToken(jwtUser);
+		return new AuthenticationInfo(token, jwtUser);
 	}
 }

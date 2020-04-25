@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.garden.life.commons.mapper.UserMapper">
-    <resultMap id="userDetail" type="com.garden.life.commons.beans.UserDetailDTO">
+    <resultMap id="userDetail" type="com.garden.life.commons.bean.UserDetailDTO">
         <id column="id" property="id" />
         <result column="account" property="account" />
         <result column="nickname" property="nickname" />
@@ -14,12 +14,33 @@
     </resultMap>
 
     <select id="queryUserDetailByAccount" resultMap="userDetail">
-        SELECT u.*, c.class_name
-        FROM (SELECT id, account, nickname, password, class_id, role_id, update_time, create_time
-                      FROM user) AS u
-        LEFT JOIN class AS c
-        ON u.class_id = c.id
-        WHERE u.account = #{account};
+        SELECT
+            uc.*,
+            r.NAME AS role_name
+        FROM
+            (
+            SELECT
+                u.*,
+                c.class_name
+            FROM
+                (
+                SELECT
+                    t.id,
+                    t.account,
+                    nickname,
+                    password,
+                    class_id,
+                    role_id,
+                    update_time,
+                    create_time
+                FROM
+                    ( SELECT id, account FROM user AS d WHERE d.account = #{account} ) AS t
+                    LEFT JOIN user u ON t.id = u.id
+                ) AS u
+                LEFT JOIN class AS c ON u.class_id = c.id
+            ) AS uc
+            LEFT JOIN role AS r
+            ON uc.role_id = r.id;
     </select>
 
 </mapper>

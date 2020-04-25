@@ -1,13 +1,13 @@
-package com.garden.life.commons.beans;
+package com.garden.life.commons.bean;
 
 
 import com.garden.life.commons.domain.Menu;
 import com.garden.life.commons.domain.Permission;
-import com.garden.life.commons.domain.Role;
 import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -29,6 +29,6 @@ public class UserDetailDTO implements Serializable {
 	private Date updateTime;
 	private Date createTime;
 	private Set<Permission> permissions;
-	private Set<Menu> menus;
+	private List<MenuDTO> menus;
 
 }

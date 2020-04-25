@@ -3,17 +3,18 @@ package com.garden.life.provider.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.garden.life.commons.beans.UserDetailDTO;
+import com.garden.life.commons.bean.MenuDTO;
+import com.garden.life.commons.bean.UserDetailDTO;
 import com.garden.life.commons.domain.Menu;
 import com.garden.life.commons.domain.User;
 import com.garden.life.commons.mapper.UserMapper;
 import com.garden.life.commons.service.*;
-import com.mysql.cj.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -42,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 	@Resource(name = "taskThreadPool")
 	private ThreadPoolExecutor taskThreadPool;
-	private final int ASYNC_MAX_WAIT = 5;
+
 	@Override
 	public User queryUserByUsername(String nickname) {
 		Wrapper<User> queryWrapper = new QueryWrapper<User>().likeLeft("nickname", nickname);
@@ -50,6 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		return user;
 	}
 
+    private final int ASYNC_MAX_WAIT = 5;
 	@Override
 	public UserDetailDTO queryUserDetail(String account, String password) {
 		//根据账号密码查询用户
@@ -58,7 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 			return null;
 		}
 		//异步查询菜单
-		CompletableFuture<Set<Menu>> menuFuture = CompletableFuture.supplyAsync(
+		CompletableFuture<List<MenuDTO>> menuFuture = CompletableFuture.supplyAsync(
 			()->{
 				return roleMenuService.queryMenuByRoleId(user.getRoleId());
 			},

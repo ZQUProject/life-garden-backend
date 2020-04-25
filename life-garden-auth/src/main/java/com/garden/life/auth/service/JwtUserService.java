@@ -1,5 +1,6 @@
 package com.garden.life.auth.service;
 
+import com.garden.life.auth.beans.AuthenticationInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -8,4 +9,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 
 public interface JwtUserService extends UserDetailsService {
+    AuthenticationInfo queryUserDetail(String account, String password);
 }

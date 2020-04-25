@@ -32,15 +32,15 @@ dubbo:
     basePackages: com.garden.life.auth.service.impl
   ## ApplicationConfig Bean
   application:
-    id: life-garden-provider-user
-    name: life-garden-provider-user
-    qos-port: 22222
+    id: life-garden-auth
+    name: life-garden-auth
+    qos-port: 22220
     qos-enable: true
   ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
-    port: 20881
+    port: 21880
     status: server
     serialization: kryo
     optimizer: com.garden.life.commons.optimizer.SerializationOptimizerImpl
