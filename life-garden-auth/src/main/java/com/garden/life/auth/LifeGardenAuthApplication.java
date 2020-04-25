@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
  * @author lenvaco
  * @date 2020/4/19 13:43
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.garden.life"})
 @EnableDubbo
 public class LifeGardenAuthApplication {
 	public static void main(String[] args) {

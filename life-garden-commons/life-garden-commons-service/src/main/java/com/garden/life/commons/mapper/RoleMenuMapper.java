@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.garden.life.commons.domain.Menu;
 import com.garden.life.commons.domain.RoleMenu;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * <p>
@@ -15,5 +15,5 @@ import java.util.Set;
  * @since 2020-04-12
  */
 public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
-    Set<Menu> queryMenuByRoleId(Integer roleId);
+    List<Menu> queryMenuByRoleId(Integer roleId);
 }

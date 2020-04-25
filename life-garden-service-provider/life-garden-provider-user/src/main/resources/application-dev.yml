@@ -13,11 +13,22 @@ spring:
       maximum-pool-size: 8
       connection-test-query: SELECT 1
       max-lifetime: 1000000
-
+  redis:
+    database: 0
+    host: 47.104.154.54
+    port: 6379
+    password: password123
+    #连接超时时间
+    timeout: 15000
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: 10000
 # Service Port
 server:
   port: 8041
-
 # Services Versions
 services:
   versions:
@@ -47,7 +58,7 @@ dubbo:
   protocol:
     id: dubbo
     name: dubbo
-    port: 20881
+    port: 20883
     status: server
     serialization: kryo
     optimizer: com.garden.life.commons.optimizer.SerializationOptimizerImpl
@@ -81,3 +92,10 @@ management:
         extras: load,threadpool
 logging:
   level.com.garden.life.commons.mapper: DEBUG
+life:
+  garden:
+    user:
+      pool:
+        core-size: 20
+        max-size: 100
+        alive-time: 60

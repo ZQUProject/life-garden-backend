@@ -5,9 +5,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -60,8 +58,8 @@ public class ThreadPoolTaskConfiguration {
         return new ThreadPoolExecutor(threadPoolTaskProperties.getCoreSize(),
                                       threadPoolTaskProperties.getMaxSize(),
                                       threadPoolTaskProperties.getAliveTime(),
-                                      threadPoolTaskProperties.getTimeUnit(),
-                                      threadPoolTaskProperties.getBlockingQueue(),
+                                      TimeUnit.SECONDS,
+                                      new LinkedBlockingQueue<>(),
                                       new TaskThreadFactory("UserModuleThreadPool"));
     }
 }

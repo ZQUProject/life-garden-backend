@@ -11,7 +11,5 @@ import java.util.concurrent.*;
 public class ThreadPoolTaskProperties {
     private int coreSize;
     private int maxSize;
-    private int aliveTime;
-    private TimeUnit timeUnit = TimeUnit.SECONDS;
-    private BlockingQueue<Runnable> blockingQueue = new LinkedBlockingQueue<Runnable>();
+    private Long aliveTime;
 }

@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author lenvaco
  * @date 2020/3/28 21:36
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.garden.life"})
 @EnableDubbo
 @EnableTransactionManagement
 @EnableAsync

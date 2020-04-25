@@ -1,14 +1,12 @@
 package com.garden.life.consumer.user.controller;
 
-import com.garden.life.commons.beans.ResponseResult;
-import com.garden.life.commons.beans.UserDetailDTO;
+import com.garden.life.commons.bean.ResponseResult;
+import com.garden.life.commons.bean.UserDetailDTO;
 import com.garden.life.commons.domain.User;
 import com.garden.life.commons.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

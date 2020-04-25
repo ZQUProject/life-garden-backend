@@ -1,7 +1,7 @@
 package com.garden.life.commons.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.garden.life.commons.beans.UserDetailDTO;
+import com.garden.life.commons.bean.UserDetailDTO;
 import com.garden.life.commons.domain.User;
 
 /**
