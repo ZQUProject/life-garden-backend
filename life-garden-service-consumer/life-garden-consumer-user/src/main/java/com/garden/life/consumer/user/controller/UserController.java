@@ -25,7 +25,7 @@ public class UserController {
 		return new ResponseResult<User>(ResponseResult.CodeStatus.OK, "请求成功", null);
 	}
 	@PostMapping(value="/user")
-	public ResponseResult<User> updateUserData(UserDetailDTO user) {
+	public ResponseResult<User> saveUser(UserDetailDTO userDetailDTO) {
 		return new ResponseResult<User>(ResponseResult.CodeStatus.OK, "请求成功", null);
 	}
 }

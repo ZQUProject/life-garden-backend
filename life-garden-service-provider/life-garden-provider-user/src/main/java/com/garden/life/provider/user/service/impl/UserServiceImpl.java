@@ -62,7 +62,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		//异步查询菜单
 		CompletableFuture<List<MenuDTO>> menuFuture = CompletableFuture.supplyAsync(
 			()->{
-				return roleMenuService.queryMenuByRoleId(user.getRoleId());
+				List<Menu> menus = roleMenuService.queryMenuByRoleId(user.getRoleId());
+				return menuService.buildTree(menus);
 			},
 			taskThreadPool
 		).exceptionally(throwable -> {

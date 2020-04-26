@@ -22,5 +22,5 @@ public interface RoleMenuService extends IService<RoleMenu> {
      * @param roleId  角色主键id
      * @return 菜单集
      */
-    List<MenuDTO> queryMenuByRoleId(Integer roleId);
+    List<Menu> queryMenuByRoleId(Integer roleId);
 }
