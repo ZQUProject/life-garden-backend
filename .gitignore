@@ -10,7 +10,7 @@ target
 mvn*
 .dea
 .imi
-.iml
+*.iml
 .cmd
 node_modules
 npm-debug.log

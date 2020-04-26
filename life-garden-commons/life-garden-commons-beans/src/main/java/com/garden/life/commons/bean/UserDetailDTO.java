@@ -17,7 +17,6 @@ import java.util.Set;
 @Data
 public class UserDetailDTO implements Serializable {
 	private static final long serialVersionUID = 5988689497872135730L;
-
 	private Long id;
 	private String account;
 	private String nickname;

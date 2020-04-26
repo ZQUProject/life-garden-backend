@@ -35,42 +35,16 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> i
     private RedisUtils redisUtils;
 
     @Override
-    public List<MenuDTO> queryMenuByRoleId(Integer roleId) {
-        List<MenuDTO> menuDTOs = null;
+    public List<Menu> queryMenuByRoleId(Integer roleId) {
+        List<Menu> menus = null;
         //从缓存中查询菜单
-        menuDTOs = MapperUtils.string2Obj(redisUtils.get(CACHE_PREFIX + roleId), List.class);
+        menus = MapperUtils.string2Obj(redisUtils.get(CACHE_PREFIX + roleId), List.class);
         //缓存中查不到就从数据库查询
-        if (menuDTOs == null ){
-            menuDTOs = buildTree(this.getBaseMapper().queryMenuByRoleId(roleId));
+        if (menus == null ){
+            menus = this.getBaseMapper().queryMenuByRoleId(roleId);
         }
-        return menuDTOs;
+        return menus;
     }
 
-    private static final String ROOT_ID = "0";
-    private List<MenuDTO> buildTree(List<Menu> menuList) {
-        if(menuList == null) {
-            return null;
-        }
-        List<MenuDTO>menuDTOList = menuList.stream().sorted(Comparator.comparing(Menu::getSort))
-                .collect(Collectors.toList()).stream()
-                .map(menu -> MenuDTO.toDTO(menu, null))
-                .collect(Collectors.toList());
-        List<MenuDTO> trees = new ArrayList<>();
-        for (MenuDTO menuDTO: menuDTOList) {
-            //主节点选取
-            if (ROOT_ID.equals(menuDTO.getParentId().toString())){
-                trees.add(menuDTO);
-            }
-            //找到当前节点的子节点
-            for (MenuDTO mdt : menuDTOList){
-                if(mdt.getParentId().equals(menuDTO.getId())) {
-                    if(menuDTO.getChildren() == null ) {
-                        menuDTO.setChildren(new ArrayList<>());
-                    }
-                    menuDTO.getChildren().add(mdt);
-                }
-            }
-        }
-        return trees;
-    }
+
 }
