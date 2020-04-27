@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = "com.garden.life.commons.mapper")
 public class LifeGardenUserProviderApplication {
 	public static void main(String[] args) {
+
 		SpringApplication.run(LifeGardenUserProviderApplication.class, args);
 		Main.main(args);
 	}

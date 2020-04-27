@@ -11,6 +11,11 @@
     <artifactId>life-garden-gateway</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.garden.life</groupId>
+            <artifactId>life-garden-commons-util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!--gateway 网关依赖,内置webflux 依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

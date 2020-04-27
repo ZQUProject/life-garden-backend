@@ -1,19 +1,19 @@
 package com.garden.life.auth.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.garden.life.auth.beans.AuthenticationInfo;
-import com.garden.life.auth.beans.AuthorizationUser;
 import com.garden.life.auth.beans.JwtUser;
 import com.garden.life.auth.service.JwtUserService;
-import com.garden.life.auth.util.JwtTokenUtils;
+
 import com.garden.life.commons.bean.UserDetailDTO;
-import com.garden.life.commons.domain.User;
 import com.garden.life.commons.service.UserService;
+import com.garden.life.commons.util.JwtTokenUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @author lenvaco
@@ -24,9 +24,12 @@ public class JwtUserServiceImpl implements JwtUserService {
 
 	@Reference(version = "${services.versions.user.v1}", lazy = true, timeout = 3000)
 	private UserService userService;
-	@Autowired
-	private JwtTokenUtils jwtTokenUtils;
 
+	private JwtTokenUtils jwtTokenUtils;
+	@PostConstruct
+	private void init() {
+		jwtTokenUtils  = new JwtTokenUtils();
+	}
 	@Override
 	public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
 

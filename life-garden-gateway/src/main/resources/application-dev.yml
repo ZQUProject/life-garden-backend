@@ -32,8 +32,12 @@ spring:
             - Path=/api/**
           filters:
             - StripPrefix=1
-
-# Service Port
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
 server:
   port: 8081
 
