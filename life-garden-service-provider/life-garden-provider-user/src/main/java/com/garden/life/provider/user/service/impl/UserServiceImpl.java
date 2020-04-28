@@ -12,6 +12,8 @@ import com.garden.life.commons.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,6 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Service(version = "${services.versions.user.v1}",timeout = 50000)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 	@Resource

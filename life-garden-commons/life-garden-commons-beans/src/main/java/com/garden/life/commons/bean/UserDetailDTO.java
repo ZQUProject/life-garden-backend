@@ -1,6 +1,7 @@
 package com.garden.life.commons.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.garden.life.commons.domain.Menu;
 import com.garden.life.commons.domain.Permission;
 import lombok.*;
@@ -20,12 +21,17 @@ public class UserDetailDTO implements Serializable {
 	private Long id;
 	private String account;
 	private String nickname;
+	@JsonIgnore
 	private String password;
+	@JsonIgnore
 	private Integer classId;
 	private String className;
+	@JsonIgnore
 	private Integer roleId;
 	private String roleName;
+	@JsonIgnore
 	private Date updateTime;
+	@JsonIgnore
 	private Date createTime;
 	private Set<Permission> permissions;
 	private List<MenuDTO> menus;

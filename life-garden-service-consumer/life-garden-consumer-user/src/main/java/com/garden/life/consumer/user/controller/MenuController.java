@@ -3,21 +3,15 @@ package com.garden.life.consumer.user.controller;
 import cn.hutool.http.HttpStatus;
 import com.garden.life.commons.bean.MenuDTO;
 import com.garden.life.commons.bean.ResponseResult;
-import com.garden.life.commons.domain.Menu;
 import com.garden.life.commons.service.MenuService;
-import com.garden.life.commons.service.RoleMenuService;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.ValidationUtils;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 public class MenuController {
 
-    @Resource
+    @Reference(version = "${services.versions.user.v1}", lazy = true, timeout = 3000)
     private MenuService menuService;
 
 

@@ -20,9 +20,8 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/user")
-	public ResponseResult<User> queryUser(){
-		System.out.println(userService);
-		return new ResponseResult<User>(ResponseResult.CodeStatus.OK, "请求成功", null);
+	public ResponseResult<UserDetailDTO> queryUser(){
+		return new ResponseResult<UserDetailDTO>(ResponseResult.CodeStatus.OK, "请求成功", userService.queryUserDetail("admin","123456"));
 	}
 	@PostMapping(value="/user")
 	public ResponseResult<User> saveUser(UserDetailDTO userDetailDTO) {

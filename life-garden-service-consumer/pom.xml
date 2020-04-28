@@ -5,6 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>life-garden-consumer-user</module>
+        <module>life-garden-consumer-activity</module>
+        <module>life-garden-consumer-resource</module>
+        <module>life-garden-consumer-lostfound</module>
+        <module>life-garden-consumer-onlinework</module>
     </modules>
 
     <parent>

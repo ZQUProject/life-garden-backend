@@ -10,9 +10,9 @@ import com.garden.life.commons.domain.RoleMenu;
 import com.garden.life.commons.mapper.MenuMapper;
 import com.garden.life.commons.service.MenuService;
 import com.garden.life.commons.service.RoleMenuService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
  * @author RunningSnail
  * @since 2020-04-12
  */
-@Service
+@Service(version = "${services.versions.user.v1}",timeout = 50000)
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
 

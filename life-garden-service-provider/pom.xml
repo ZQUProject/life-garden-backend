@@ -5,6 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>life-garden-provider-user</module>
+        <module>life-garden-provider-activity</module>
+        <module>life-garden-provider-resource</module>
+        <module>life-garden-provider-lostfound</module>
+        <module>life-garden-provider-onlinework</module>
     </modules>
 
     <parent>

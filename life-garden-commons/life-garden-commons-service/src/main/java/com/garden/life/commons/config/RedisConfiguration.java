@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -36,8 +37,8 @@ public class RedisConfiguration extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisTemplate<String, Serializable> redisCacheTemplate(LettuceConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Serializable> template = new RedisTemplate<>();
+    public StringRedisTemplate redisTemplate(LettuceConnectionFactory redisConnectionFactory) {
+        StringRedisTemplate template = new StringRedisTemplate();
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
