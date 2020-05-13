@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * 全局异常处理
  */
 @Slf4j
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler {
     /**
      *  处理请求参数异常
@@ -53,6 +53,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Object unknownExceptionHandler(Exception exception) {
+        log.debug(exception.getMessage());
         return new ResponseResult<Object>(HttpStatus.HTTP_INTERNAL_ERROR, "系统繁忙，请稍后重试！");
     }
 }

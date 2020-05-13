@@ -14,7 +14,7 @@ spring:
       connection-test-query: SELECT 1
       max-lifetime: 1000000
   redis:
-    database: 0
+    database: 1
     host: 47.104.154.54
     port: 6379
     password: password123

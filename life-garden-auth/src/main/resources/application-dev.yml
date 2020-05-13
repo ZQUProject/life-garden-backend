@@ -2,11 +2,23 @@
 spring:
   application:
     name: life-garden-auth
+  redis:
+    database: 0
+    host: 47.104.154.54
+    port: 6379
+    password: password123
+    #连接超时时间
+    timeout: 15000
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: 10000
 
 # Service Port
 server:
   port: 8030
-
 #jwt
 jwt:
   header: Authorization
@@ -73,4 +85,4 @@ management:
         ## StatusChecker Name extras (default : empty )
         extras: load,threadpool
 logging:
-  level.com.garden.life.commons.mapper: DEBUG
+  level.com.garden.life: DEBUG
