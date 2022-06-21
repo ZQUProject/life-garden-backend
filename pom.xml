@@ -35,7 +35,7 @@
         <sentinel-transport-simple-http.version>1.7.1</sentinel-transport-simple-http.version>
         <kryo.version>0.43</kryo.version>
         <mybatis.plus.version>3.3.1</mybatis.plus.version>
-        <mysql.version>8.0.18</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <hutool-all.version>5.2.5</hutool-all.version>
     </properties>
 
